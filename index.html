@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iCUBE Accessibility Testing & Validation Tools</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy-blue: #00274d;
+            --teal-blue: #064c79;
+            --turquoise: #00ddf2;
+            --light-turquoise: #66eef9;
+            --white: #ffffff;
+            --off-white: #f5f7f9;
+            --text-dark: #1b1b1b;
+            --text-medium: #364153;
+            --radius: 6px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.65;
+            background: var(--white);
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* ── Header ── */
+        header {
+            background-color: var(--navy-blue);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo a {
+            display: flex;
+            align-items: center;
+        }
+        .logo img { height: 30px; }
+        nav { display: flex; align-items: center; }
+        nav a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            margin-left: 24px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.01em;
+            transition: color 0.2s;
+        }
+        nav a:hover { color: var(--light-turquoise); }
+
+        /* ── Hero banner ── */
+        .hero {
+            background: linear-gradient(135deg, var(--navy-blue) 0%, var(--teal-blue) 100%);
+            color: var(--white);
+            padding: 64px 24px 60px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            max-width: 740px;
+            margin: 0 auto 14px;
+            line-height: 1.2;
+        }
+        .hero .subtitle {
+            font-size: 1.05rem;
+            opacity: 0.88;
+            max-width: 620px;
+            margin: 0 auto;
+            font-weight: 400;
+        }
+        .hero .badge {
+            display: inline-block;
+            background: var(--turquoise);
+            color: var(--navy-blue);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 16px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+        .hero .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 24px;
+            background: var(--turquoise);
+            color: var(--navy-blue);
+            padding: 13px 34px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.02em;
+            transition: background 0.2s ease, transform 0.15s ease;
+        }
+        .hero .cta-btn:hover {
+            background: #008fa0;
+            transform: translateY(-2px);
+        }
+        .hero .cta-note {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+
+        /* ── Teal divider bar ── */
+        .teal-bar {
+            height: 4px;
+            background: linear-gradient(90deg, var(--turquoise), var(--light-turquoise));
+        }
+
+        /* ── Section shared ── */
+        section { padding: 60px 24px; }
+        .section-inner { max-width: 900px; margin: 0 auto; }
+        section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--navy-blue);
+        }
+        section p { color: var(--text-medium); margin-bottom: 14px; max-width: 740px; }
+        section ul { color: var(--text-medium); padding-left: 20px; margin-bottom: 14px; }
+        section li { margin-bottom: 6px; }
+
+        /* ── Purpose cards ── */
+        .purpose-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 14px;
+            margin-top: 24px;
+        }
+        .purpose-card {
+            background: var(--off-white);
+            border-left: 3px solid var(--turquoise);
+            border-radius: var(--radius);
+            padding: 18px 18px;
+            font-size: 0.92rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-medium);
+        }
+        .purpose-card .icon {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            background: var(--turquoise);
+            color: var(--navy-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+        }
+
+        /* ── Approach steps (teal bg) ── */
+        .approach-bg {
+            background: var(--teal-blue);
+            color: var(--white);
+        }
+        .approach-bg h2 { color: var(--white); }
+        .approach-bg p { color: rgba(255,255,255,0.85); }
+        .steps { list-style: none; counter-reset: step; margin-top: 24px; }
+        .steps li {
+            counter-increment: step;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 0;
+            font-size: 1rem;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+            color: rgba(255,255,255,0.92);
+        }
+        .steps li:last-child { border-bottom: none; }
+        .steps li::before {
+            content: counter(step);
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            background: var(--turquoise);
+            color: var(--navy-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* ── Standards badges ── */
+        .standards-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 22px;
+        }
+        .standard-badge {
+            background: var(--navy-blue);
+            color: var(--white);
+            padding: 10px 22px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 0.92rem;
+            font-family: 'Montserrat', sans-serif;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.2s ease, transform 0.15s ease;
+        }
+        .standard-badge:hover {
+            background: var(--teal-blue);
+            transform: translateY(-2px);
+        }
+
+        /* ── Final CTA strip ── */
+        .cta-strip {
+            background: var(--light-turquoise);
+            text-align: center;
+            padding: 48px 24px;
+        }
+        .cta-strip h2 {
+            color: var(--navy-blue);
+            text-align: center;
+        }
+        .cta-strip p {
+            text-align: center;
+            margin: 0 auto 20px;
+        }
+        .cta-strip .cta-btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--navy-blue);
+            border: 2px solid var(--navy-blue);
+            padding: 12px 32px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            font-family: 'Montserrat', sans-serif;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+        .cta-strip .cta-btn-outline:hover {
+            background: var(--navy-blue);
+            color: var(--white);
+        }
+
+        /* ── Footer ── */
+        footer {
+            background: var(--navy-blue);
+            color: rgba(255,255,255,0.7);
+            padding: 40px 24px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+        footer a { color: var(--light-turquoise); text-decoration: none; }
+        footer a:hover { color: var(--white); }
+        footer .footer-links { margin-bottom: 14px; }
+        footer .footer-links a { margin: 0 14px; }
+        footer .copyright { opacity: 0.5; margin-top: 6px; }
+
+        /* ── Responsive ── */
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 1.5rem; }
+            .header-inner { flex-direction: column; gap: 8px; }
+            nav a { margin-left: 14px; font-size: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <div class="header-inner">
+        <div class="logo">
+            <a href="https://thinkicube.com" target="_blank" rel="noopener">
+                <img src="https://cdn.prod.website-files.com/69300ae98f34260a5cdba1b5/6960e5924da826f9638fcaae_694094f3f162f8cc1481c143_iCubeOrigLogo%201%201.webp" alt="iCUBE logo">
+            </a>
+        </div>
+        <nav>
+            <a href="#overview">Overview</a>
+            <a href="#purpose">Purpose</a>
+            <a href="#approach">Approach</a>
+            <a href="#standards">Standards</a>
+            <a href="https://thinkicube.com" target="_blank" rel="noopener">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<!-- Hero -->
+<div class="hero">
+    <span class="badge">2026 Edition</span>
+    <h1>iCUBE Recommended Accessibility Testing &amp; Validation Tools</h1>
+    <p class="subtitle">A practical reference guide to help teams identify accessibility issues, evaluate conformance, and support inclusive digital experiences.</p>
+    <a class="cta-btn" href="iCUBE Recommended Accessibility Testing and Validation Tools [2026].pdf">&#128190; Download the Guide (PDF)</a>
+    <span class="cta-note">7.7 MB &middot; 2026 Edition</span>
+</div>
+
+<div class="teal-bar"></div>
+
+<!-- Overview -->
+<section id="overview">
+    <div class="section-inner">
+        <h2>Overview</h2>
+        <p>This guide covers accessibility testing and validation across:</p>
+        <ul>
+            <li>Websites</li>
+            <li>Web applications</li>
+            <li>Documents</li>
+            <li>Information and Communication Technology (ICT) solutions</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Purpose -->
+<section id="purpose">
+    <div class="section-inner">
+        <h2>Purpose</h2>
+        <p>This guide provides a practical accessibility testing reference that combines:</p>
+        <div class="purpose-grid">
+            <div class="purpose-card"><span class="icon">&#9881;</span> Automated Testing</div>
+            <div class="purpose-card"><span class="icon">&#128065;</span> Manual Inspection</div>
+            <div class="purpose-card"><span class="icon">&#9889;</span> Keyboard-Only Testing</div>
+            <div class="purpose-card"><span class="icon">&#127909;</span> Screen Reader Testing</div>
+            <div class="purpose-card"><span class="icon">&#127912;</span> Color Contrast Analysis</div>
+            <div class="purpose-card"><span class="icon">&#128187;</span> Assistive Tech Testing</div>
+            <div class="purpose-card"><span class="icon">&#128196;</span> PDF Validation</div>
+        </div>
+    </div>
+</section>
+
+<!-- Approach -->
+<section id="approach" class="approach-bg">
+    <div class="section-inner">
+        <h2>Recommended Validation Approach</h2>
+        <p>iCUBE recommends a comprehensive, six-step validation approach:</p>
+        <ol class="steps">
+            <li>Automated Testing</li>
+            <li>Manual Keyboard Testing</li>
+            <li>Screen Reader Testing</li>
+            <li>Color Contrast Verification</li>
+            <li>Responsive Zoom Testing</li>
+            <li>PDF Accessibility Validation</li>
+        </ol>
+    </div>
+</section>
+
+<!-- Standards -->
+<section id="standards">
+    <div class="section-inner">
+        <h2>Standards Supported</h2>
+        <p>The recommendations in this guide align with the following standards and requirements:</p>
+        <div class="standards-row">
+            <a class="standard-badge" href="https://www.access-board.gov/section-508" target="_blank" rel="noopener">Section 508</a>
+            <a class="standard-badge" href="https://www.w3.org/TR/WCAG20/" target="_blank" rel="noopener">WCAG 2.0 Level A / AA</a>
+            <a class="standard-badge" href="https://www.w3.org/TR/WCAG21/" target="_blank" rel="noopener">WCAG 2.1</a>
+            <a class="standard-badge" href="https://www.pdfua.org/en/pdf-ua-iso-14289/" target="_blank" rel="noopener">PDF/UA</a>
+        </div>
+    </div>
+</section>
+
+<!-- Final CTA -->
+<div class="cta-strip">
+    <h2>Download the Full Guide</h2>
+    <p>Get the complete reference with tool recommendations, workflows, and best practices.</p>
+    <a class="cta-btn-outline" href="iCUBE Recommended Accessibility Testing and Validation Tools [2026].pdf">&#128190; Download PDF</a>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-links">
+        <a href="https://thinkicube.com" target="_blank" rel="noopener">Think iCUBE</a>
+        <a href="mailto:info@thinkicube.com">Contact Us</a>
+    </div>
+    <p>Developed and maintained by <strong style="color:rgba(255,255,255,0.9)">iCUBE, Inc.</strong></p>
+    <p style="margin-top:4px;font-size:0.8rem;">Not an official U.S. Government publication.</p>
+    <p class="copyright">Copyright &copy; 2026 iCUBE, Inc. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
