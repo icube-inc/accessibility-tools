@@ -71,15 +71,14 @@
         /* ── Header ── */
         header {
             background-color: var(--navy-blue);
-            padding: 10px 0;
+            padding: 10px 20px;
             position: sticky;
             top: 0;
             z-index: 100;
         }
         .header-inner {
-            max-width: 1140px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 32px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -88,19 +87,18 @@
             display: flex;
             align-items: center;
         }
-        .logo img { height: 30px; }
+        .logo img { height: 48px; }
         nav { display: flex; align-items: center; }
         nav a {
-            color: rgba(255,255,255,0.8);
+            color: #fff;
             text-decoration: none;
-            margin-left: 24px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            font-family: 'Montserrat', sans-serif;
-            letter-spacing: 0.01em;
+            margin-left: 31px;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
             transition: color 0.2s;
         }
-        nav a:hover { color: var(--light-turquoise); }
+        nav a:hover { color: var(--turquoise); }
 
         /* ── Hero banner ── */
         .hero {
@@ -214,9 +212,9 @@
             font-size: 0.85rem;
         }
 
-        /* ── Approach steps (teal bg) ── */
+        /* ── Approach steps (navy bg) ── */
         .approach-bg {
-            background: var(--teal-blue);
+            background: var(--navy-blue);
             color: var(--white);
         }
         .approach-bg h2 { color: var(--white); }
@@ -326,7 +324,7 @@
         @media (max-width: 640px) {
             .hero h1 { font-size: 1.5rem; }
             .header-inner { flex-direction: column; gap: 8px; }
-            nav a { margin-left: 14px; font-size: 0.75rem; }
+            nav a { margin-left: 16px; font-size: 14px; }
         }
     </style>
 </head>
@@ -417,10 +415,10 @@
         <h2>Standards Supported</h2>
         <p>The recommendations in this guide align with the following standards and requirements:</p>
         <div class="standards-row">
-            <a class="standard-badge" href="https://www.access-board.gov/ada/" target="_blank" rel="noopener">Section 508</a>
+            <a class="standard-badge" href="https://www.section508.gov/" target="_blank" rel="noopener">Section 508</a>
             <a class="standard-badge" href="https://www.w3.org/TR/WCAG20/" target="_blank" rel="noopener">WCAG 2.0 Level A / AA</a>
             <a class="standard-badge" href="https://www.w3.org/TR/WCAG21/" target="_blank" rel="noopener">WCAG 2.1</a>
-            <a class="standard-badge" href="https://www.iso.org/iso-14289-pdf-ua.html" target="_blank" rel="noopener">PDF/UA</a>
+            <a class="standard-badge" href="https://www.adobe.com/uk/acrobat/resources/document-files/pdf-types/pdf-ua.html" target="_blank" rel="noopener">PDF/UA</a>
         </div>
     </div>
 </section>
@@ -438,8 +436,8 @@
 <!-- Footer -->
 <footer>
     <div class="footer-links">
-        <a href="https://thinkicube.com" target="_blank" rel="noopener">Think iCUBE</a>
-        <a href="mailto:info@thinkicube.com">Contact Us</a>
+        <a href="https://thinkicube.com" target="_blank" rel="noopener">iCUBE</a>
+        <a href="https://thinkicube.com/contact-us">Contact Us</a>
     </div>
     <p>Developed and maintained by <strong style="color:rgba(255,255,255,0.9)">iCUBE, Inc.</strong></p>
     <p style="margin-top:4px;font-size:0.8rem;">Not an official U.S. Government publication.</p>
